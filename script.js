@@ -28,3 +28,50 @@ const posts = [
     likes: 152,
   },
 ];
+
+let cardsContainer = document.getElementById("cards-container");
+
+function renderPosts(posts) {
+  let postsString = "";
+  posts.forEach((post) => {
+    postsString += `
+          <div class="card">
+            <div class="card-author">
+              <img
+                class="avatar"
+                src="${post.avatar}"
+                alt="Portre of Van Gogh"
+              />
+              <div class="card-author-info">
+                <h2 class="name">${post.name}</h2>
+                <p class="location">${post.location}</p>
+              </div>
+            </div>
+            <img
+              class="post"
+              src="${post.post}"
+              alt=""
+            />
+            <div class="card-info">
+              <div class="card-icons">
+                <img class="icon" src="./images/icon-heart.png" alt="" />
+                <img class="icon" src="./images/icon-comment.png" alt="" />
+                <img class="icon" src="./images/icon-dm.png" alt="" />
+              </div>
+              <p class="like-counter">
+                <span class="likes">${post.likes}</span> likes
+              </p>
+              <p>
+                <span class="username">${post.username}</span>
+                <span class="comment">${post.comment}</span>
+              </p>
+            </div>
+          </div>
+    `;
+  });
+  cardsContainer.innerHTML = postsString;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  renderPosts(posts);
+});
